@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     initGalleryModal();
     initNaverMap();
+    initFallingPetals();
 });
 
 // 계좌번호 복사 기능
@@ -339,4 +340,61 @@ function initNaverMap() {
 
     // 페이지 로드 시 정보창 자동 표시
     infoWindow.open(map, marker);
+}
+
+// 떨어지는 꽃잎 효과
+function initFallingPetals() {
+    const petalsContainer = document.querySelector('.falling-petals');
+
+    if (!petalsContainer) {
+        return;
+    }
+
+    // 꽃잎 모양 배열 (다양한 꽃 이모지)
+    const petalShapes = ['🌸', '🌺', '🌼', '✿', '❀', '💐'];
+
+    // 꽃잎 생성 개수 (은은하게 하기 위해 적게 설정)
+    const petalCount = 15;
+
+    // 꽃잎 생성 함수
+    function createPetal() {
+        const petal = document.createElement('div');
+        petal.className = 'petal';
+
+        // 랜덤 꽃잎 모양 선택
+        petal.textContent = petalShapes[Math.floor(Math.random() * petalShapes.length)];
+
+        // 랜덤 시작 위치 (가로)
+        petal.style.left = Math.random() * 100 + '%';
+
+        // 랜덤 크기 (작게)
+        const size = 15 + Math.random() * 10;
+        petal.style.fontSize = size + 'px';
+
+        // 랜덤 애니메이션 지속 시간 (느리게)
+        const duration = 8 + Math.random() * 7;
+        petal.style.animationDuration = duration + 's';
+
+        // 랜덤 지연 시간
+        petal.style.animationDelay = Math.random() * 5 + 's';
+
+        // 은은한 투명도 (0.2 ~ 0.4)
+        petal.style.opacity = 0.2 + Math.random() * 0.2;
+
+        petalsContainer.appendChild(petal);
+
+        // 애니메이션 끝나면 꽃잎 재생성
+        petal.addEventListener('animationiteration', function() {
+            petal.style.left = Math.random() * 100 + '%';
+            const newDuration = 8 + Math.random() * 7;
+            petal.style.animationDuration = newDuration + 's';
+        });
+    }
+
+    // 초기 꽃잎 생성
+    for (let i = 0; i < petalCount; i++) {
+        setTimeout(() => {
+            createPetal();
+        }, i * 200); // 0.2초 간격으로 생성
+    }
 }
