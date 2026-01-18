@@ -361,6 +361,79 @@ body {
     margin-top: 20px;
 }
 
+/* D-Day Counter */
+.dday-counter {
+    margin-top: 40px;
+}
+
+.counter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.counter-item {
+    background: white;
+    padding: 20px 10px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--border-color);
+    text-align: center;
+}
+
+.counter-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.counter-label {
+    font-size: 0.75rem;
+    color: var(--light-text);
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.counter-message {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.highlight-days {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+/* Featured Image Section */
+.featured-image {
+    width: 100%;
+    background: white;
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+.featured-image-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-hover);
+    border: 3px solid var(--border-color);
+}
+
+.featured-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
 /* Wedding Info Section */
 .wedding-info {
     width: 100%;
@@ -497,14 +570,16 @@ body {
 }
 
 .map-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
-    font-size: 1.1rem;
+}
+
+.map-icon svg {
+    width: 20px;
+    height: 20px;
 }
 
 .map-link.naver {
@@ -512,29 +587,14 @@ body {
     color: white;
 }
 
-.map-link.naver .map-icon {
-    background: white;
-    color: #03C75A;
-}
-
 .map-link.kakao {
     background: #FEE500;
-    color: #000;
-}
-
-.map-link.kakao .map-icon {
-    background: #000;
-    color: #FEE500;
+    color: #3C1E1E;
 }
 
 .map-link.tmap {
     background: #1E88E5;
     color: white;
-}
-
-.map-link.tmap .map-icon {
-    background: white;
-    color: #1E88E5;
 }
 
 .map-link:hover {

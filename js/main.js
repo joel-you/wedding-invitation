@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNaverMap();
     initFallingPetals();
     initScrollAnimations();
+    initDdayCounter();
 });
 
 // 계좌번호 복사 기능
@@ -281,7 +282,7 @@ function calculateDday(targetDate) {
 function initNaverMap() {
     // 웨딩홀 주소와 좌표
     const weddingHallAddress = '서울특별시 강남구 논현로 79길 72';
-    const weddingHallName = '올림피아센터빌딩 2층 세인트홀';
+    const weddingHallName = '올림피아센터빌딩 2층 세인트 메리엘';
 
     // 강남역 근처 올림피아센터빌딩 좌표
     const position = new naver.maps.LatLng(37.4991, 127.0287);
@@ -303,7 +304,7 @@ function initNaverMap() {
         map: map,
         title: weddingHallName,
         icon: {
-            content: '<div style="background-color: #d4a373; color: white; padding: 10px 15px; border-radius: 20px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">💒 세인트홀</div>',
+            content: '<div style="background-color: #d4a373; color: white; padding: 10px 15px; border-radius: 20px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">💒 세인트 메리엘</div>',
             anchor: new naver.maps.Point(50, 50)
         }
     });
@@ -406,4 +407,54 @@ function initScrollAnimations() {
     // 필요시 나중에 다시 활성화 가능
     console.log('GSAP animations disabled for stability');
     return;
+}
+
+// D-Day 카운터
+function initDdayCounter() {
+    // 결혼식 날짜: 2026년 2월 28일 오후 1시 40분
+    const weddingDate = new Date('2026-02-28T13:40:00').getTime();
+
+    function updateCounter() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        // 시간 계산
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // DOM 업데이트
+        const daysElement = document.getElementById('days');
+        const hoursElement = document.getElementById('hours');
+        const minutesElement = document.getElementById('minutes');
+        const secondsElement = document.getElementById('seconds');
+        const totalDaysElement = document.getElementById('total-days');
+
+        if (daysElement) daysElement.textContent = days;
+        if (hoursElement) hoursElement.textContent = hours;
+        if (minutesElement) minutesElement.textContent = minutes;
+        if (secondsElement) secondsElement.textContent = seconds;
+        if (totalDaysElement) totalDaysElement.textContent = days;
+
+        // 결혼식이 지났을 경우
+        if (distance < 0) {
+            if (daysElement) daysElement.textContent = '0';
+            if (hoursElement) hoursElement.textContent = '0';
+            if (minutesElement) minutesElement.textContent = '0';
+            if (secondsElement) secondsElement.textContent = '0';
+            if (totalDaysElement) totalDaysElement.textContent = '0';
+
+            const messageElement = document.querySelector('.counter-message');
+            if (messageElement) {
+                messageElement.textContent = '인규 ♥ 주영 결혼식이 열렸습니다 ❤️';
+            }
+        }
+    }
+
+    // 초기 실행
+    updateCounter();
+
+    // 1초마다 업데이트
+    setInterval(updateCounter, 1000);
 }
