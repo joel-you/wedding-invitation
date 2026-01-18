@@ -447,7 +447,7 @@ function initDdayCounter() {
 
             const messageElement = document.querySelector('.counter-message');
             if (messageElement) {
-                messageElement.textContent = '인규 ♥ 주영 결혼식이 열렸습니다 ❤️';
+                messageElement.textContent = '재영 ♥ 다은 결혼식이 열렸습니다 ❤️';
             }
         }
     }
