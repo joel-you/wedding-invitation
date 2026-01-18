@@ -679,21 +679,22 @@ body {
     }
 
     .couple-names {
-        flex-direction: column;
-        gap: 20px;
+        flex-direction: row;
+        gap: 15px;
         padding: 0 10px;
     }
 
     .couple-names h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .couple-names p {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
+        line-height: 1.5;
     }
 
     .divider {
-        transform: rotate(90deg);
+        font-size: 2rem;
     }
 
     .contact {
