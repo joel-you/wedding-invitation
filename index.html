@@ -3,12 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="모바일 청첩장">
-    <title>모바일 청첩장</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="유재영 ♥ 이다은의 결혼식에 초대합니다. 2026년 2월 28일 토요일 오후 1시 40분">
+    <meta name="keywords" content="모바일 청첩장, 결혼식, 웨딩, 유재영, 이다은">
+    <meta name="author" content="유재영 & 이다은">
+    <title>유재영 ♥ 이다은 결혼합니다</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://joel-you.github.io/wedding-invitation/">
+    <meta property="og:title" content="유재영 ♥ 이다은 결혼합니다">
+    <meta property="og:description" content="2026년 2월 28일 토요일 오후 1시 40분 | 올림피아센터빌딩 2층 세인트홀">
+    <meta property="og:image" content="https://joel-you.github.io/wedding-invitation/images/optimized/main.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://joel-you.github.io/wedding-invitation/">
+    <meta property="twitter:title" content="유재영 ♥ 이다은 결혼합니다">
+    <meta property="twitter:description" content="2026년 2월 28일 토요일 오후 1시 40분 | 올림피아센터빌딩 2층 세인트홀">
+    <meta property="twitter:image" content="https://joel-you.github.io/wedding-invitation/images/optimized/main.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💒</text></svg>">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=j31ci0k360&submodules=geocoder"></script>
 </head>
 <body>
@@ -57,6 +86,55 @@
         </div>
     </section>
 
+    <!-- Calendar Section -->
+    <section class="calendar-section">
+        <div class="container">
+            <h3 class="calendar-title">2026년 2월 28일 토요일 오후 1시 40분</h3>
+            <div class="calendar">
+                <div class="calendar-header">
+                    <div class="day-name">일</div>
+                    <div class="day-name">월</div>
+                    <div class="day-name">화</div>
+                    <div class="day-name">수</div>
+                    <div class="day-name">목</div>
+                    <div class="day-name">금</div>
+                    <div class="day-name">토</div>
+                </div>
+                <div class="calendar-body">
+                    <div class="day-cell">1</div>
+                    <div class="day-cell">2</div>
+                    <div class="day-cell">3</div>
+                    <div class="day-cell">4</div>
+                    <div class="day-cell">5</div>
+                    <div class="day-cell">6</div>
+                    <div class="day-cell">7</div>
+                    <div class="day-cell">8</div>
+                    <div class="day-cell">9</div>
+                    <div class="day-cell">10</div>
+                    <div class="day-cell">11</div>
+                    <div class="day-cell">12</div>
+                    <div class="day-cell">13</div>
+                    <div class="day-cell">14</div>
+                    <div class="day-cell">15</div>
+                    <div class="day-cell">16</div>
+                    <div class="day-cell">17</div>
+                    <div class="day-cell">18</div>
+                    <div class="day-cell">19</div>
+                    <div class="day-cell">20</div>
+                    <div class="day-cell">21</div>
+                    <div class="day-cell">22</div>
+                    <div class="day-cell">23</div>
+                    <div class="day-cell">24</div>
+                    <div class="day-cell">25</div>
+                    <div class="day-cell">26</div>
+                    <div class="day-cell">27</div>
+                    <div class="day-cell wedding-day">28</div>
+                </div>
+            </div>
+            <p class="calendar-note">Save the Date</p>
+        </div>
+    </section>
+
     <!-- Wedding Info Section -->
     <section class="wedding-info">
         <div class="container">
@@ -93,6 +171,23 @@
         <div class="container">
             <h3>오시는 길</h3>
             <div id="map" class="map-container"></div>
+
+            <!-- Map App Links -->
+            <div class="map-links">
+                <a href="https://map.naver.com/p/search/서울특별시 강남구 논현로 79길 72" target="_blank" class="map-link naver">
+                    <span class="map-icon">N</span>
+                    네이버 지도
+                </a>
+                <a href="https://map.kakao.com/?q=서울특별시 강남구 논현로 79길 72" target="_blank" class="map-link kakao">
+                    <span class="map-icon">K</span>
+                    카카오맵
+                </a>
+                <a href="https://tmap.life/9a7fc9a0" target="_blank" class="map-link tmap">
+                    <span class="map-icon">T</span>
+                    티맵
+                </a>
+            </div>
+
             <div class="map-info">
                 <h4>🚇 지하철</h4>
                 <p>강남역 2호선 1번출구에서 약 200m 직진, 우리은행에서 우회전 후 약 300m 직진</p>
