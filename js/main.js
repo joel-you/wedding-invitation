@@ -458,3 +458,41 @@ function initDdayCounter() {
     // 1초마다 업데이트
     setInterval(updateCounter, 1000);
 }
+
+// 주소 복사 기능
+function copyAddress() {
+    const address = '서울특별시 강남구 논현로 79길 72';
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(address)
+            .then(() => {
+                alert('주소가 복사되었습니다! 📋');
+            })
+            .catch(err => {
+                console.error('복사 실패:', err);
+                fallbackCopyAddress(address);
+            });
+    } else {
+        fallbackCopyAddress(address);
+    }
+}
+
+// 구형 브라우저용 주소 복사
+function fallbackCopyAddress(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+        document.execCommand('copy');
+        alert('주소가 복사되었습니다! 📋');
+    } catch (err) {
+        console.error('복사 실패:', err);
+        alert('주소 복사에 실패했습니다. 주소: ' + text);
+    }
+
+    document.body.removeChild(textarea);
+}

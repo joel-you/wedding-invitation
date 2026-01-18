@@ -197,22 +197,32 @@
     <!-- Map Section -->
     <section class="map">
         <div class="container">
-            <h3>오시는 길</h3>
+            <h3 class="location-title">LOCATION</h3>
+
+            <!-- Location Info -->
+            <div class="location-info-box">
+                <h4 class="venue-name">세인트 메리엘 (2층)</h4>
+                <div class="address-line">
+                    <p class="venue-address">서울특별시 강남구 논현로 79길 72</p>
+                    <button class="address-copy-btn" onclick="copyAddress()">📋</button>
+                </div>
+            </div>
+
             <div id="map" class="map-container"></div>
 
             <!-- Map App Links -->
-            <div class="map-links">
-                <a href="https://map.naver.com/p/search/서울특별시 강남구 논현로 79길 72" target="_blank" class="map-link naver">
-                    <span class="map-icon-simple">N</span>
-                    <span>네이버지도</span>
+            <div class="map-links-new">
+                <a href="https://map.naver.com/p/search/서울특별시 강남구 논현로 79길 72" target="_blank" class="map-link-card">
+                    <span class="map-logo">🗺️</span>
+                    <span>네이버</span>
                 </a>
-                <a href="https://map.kakao.com/?q=서울특별시 강남구 논현로 79길 72" target="_blank" class="map-link kakao">
-                    <span class="map-icon-simple">💬</span>
-                    <span>카카오맵</span>
+                <a href="https://tmap.life/9a7fc9a0" target="_blank" class="map-link-card">
+                    <span class="map-logo">📍</span>
+                    <span>T MAP</span>
                 </a>
-                <a href="https://tmap.life/9a7fc9a0" target="_blank" class="map-link tmap">
-                    <span class="map-icon-simple">📍</span>
-                    <span>티맵</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=서울특별시+강남구+논현로+79길+72" target="_blank" class="map-link-card">
+                    <span class="map-logo">🌍</span>
+                    <span>구글맵</span>
                 </a>
             </div>
 
