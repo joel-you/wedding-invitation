@@ -400,86 +400,10 @@ function initFallingPetals() {
     }
 }
 
-// GSAP 스크롤 애니메이션
+// GSAP 스크롤 애니메이션 (현재 비활성화됨)
 function initScrollAnimations() {
-    // ScrollTrigger 플러그인 등록
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-        console.warn('GSAP or ScrollTrigger not loaded');
-        return;
-    }
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    // 부드러운 fade-in 애니메이션 (섹션은 제외하고 특정 요소만)
-
-    // 갤러리 아이템 순차 애니메이션
-    const galleryItems = gsap.utils.toArray('.gallery-item');
-    if (galleryItems.length > 0) {
-        galleryItems.forEach((item, index) => {
-            gsap.fromTo(item,
-                {
-                    opacity: 0.3,
-                    y: 20
-                },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.5,
-                    delay: index * 0.05,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: item,
-                        start: 'top 95%',
-                        toggleActions: 'play none none none'
-                    }
-                }
-            );
-        });
-    }
-
-    // 캘린더 애니메이션
-    const calendar = document.querySelector('.calendar');
-    if (calendar) {
-        gsap.fromTo('.calendar',
-            {
-                opacity: 0.5,
-                scale: 0.95
-            },
-            {
-                opacity: 1,
-                scale: 1,
-                duration: 0.6,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: '.calendar',
-                    start: 'top 90%',
-                    toggleActions: 'play none none none'
-                }
-            }
-        );
-    }
-
-    // 계좌 정보 카드 애니메이션
-    const accountCards = gsap.utils.toArray('.account-card');
-    if (accountCards.length > 0) {
-        accountCards.forEach((card, index) => {
-            gsap.fromTo(card,
-                {
-                    opacity: 0.5,
-                    x: index % 2 === 0 ? -20 : 20
-                },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.6,
-                    ease: 'power2.out',
-                    scrollTrigger: {
-                        trigger: card,
-                        start: 'top 90%',
-                        toggleActions: 'play none none none'
-                    }
-                }
-            );
-        });
-    }
+    // GSAP 애니메이션 비활성화
+    // 필요시 나중에 다시 활성화 가능
+    console.log('GSAP animations disabled for stability');
+    return;
 }
