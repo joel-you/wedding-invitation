@@ -410,95 +410,76 @@ function initScrollAnimations() {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // 섹션 fade-in 애니메이션
-    const sections = gsap.utils.toArray('section');
-    sections.forEach(section => {
-        gsap.from(section, {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: section,
-                start: 'top 80%',
-                end: 'bottom 20%',
-                toggleActions: 'play none none reverse'
-            }
-        });
-    });
+    // 부드러운 fade-in 애니메이션 (섹션은 제외하고 특정 요소만)
 
     // 갤러리 아이템 순차 애니메이션
     const galleryItems = gsap.utils.toArray('.gallery-item');
-    galleryItems.forEach((item, index) => {
-        gsap.from(item, {
-            opacity: 0,
-            y: 30,
-            duration: 0.6,
-            delay: index * 0.1,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: item,
-                start: 'top 90%',
-                toggleActions: 'play none none reverse'
-            }
+    if (galleryItems.length > 0) {
+        galleryItems.forEach((item, index) => {
+            gsap.fromTo(item,
+                {
+                    opacity: 0.3,
+                    y: 20
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    delay: index * 0.05,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 95%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
         });
-    });
+    }
 
     // 캘린더 애니메이션
-    gsap.from('.calendar', {
-        opacity: 0,
-        scale: 0.9,
-        duration: 0.8,
-        ease: 'back.out(1.4)',
-        scrollTrigger: {
-            trigger: '.calendar',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        }
-    });
+    const calendar = document.querySelector('.calendar');
+    if (calendar) {
+        gsap.fromTo('.calendar',
+            {
+                opacity: 0.5,
+                scale: 0.95
+            },
+            {
+                opacity: 1,
+                scale: 1,
+                duration: 0.6,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '.calendar',
+                    start: 'top 90%',
+                    toggleActions: 'play none none none'
+                }
+            }
+        );
+    }
 
     // 계좌 정보 카드 애니메이션
     const accountCards = gsap.utils.toArray('.account-card');
-    accountCards.forEach((card, index) => {
-        gsap.from(card, {
-            opacity: 0,
-            x: index % 2 === 0 ? -50 : 50,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 85%',
-                toggleActions: 'play none none reverse'
-            }
+    if (accountCards.length > 0) {
+        accountCards.forEach((card, index) => {
+            gsap.fromTo(card,
+                {
+                    opacity: 0.5,
+                    x: index % 2 === 0 ? -20 : 20
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.6,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
         });
-    });
-
-    // 지도 애니메이션
-    gsap.from('#map', {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-            trigger: '#map',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        }
-    });
-
-    // 제목 요소 애니메이션
-    const titles = gsap.utils.toArray('h2, h3');
-    titles.forEach(title => {
-        gsap.from(title, {
-            opacity: 0,
-            y: 20,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: title,
-                start: 'top 85%',
-                toggleActions: 'play none none reverse'
-            }
-        });
-    });
+    }
 }
