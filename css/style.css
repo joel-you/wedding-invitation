@@ -698,11 +698,21 @@ body {
     }
 
     .contact {
-        flex-direction: column;
+        flex-direction: row;
+        gap: 10px;
     }
 
     .contact-person {
-        max-width: 100%;
+        flex: 1;
+    }
+
+    .contact-person p {
+        font-size: 0.85rem;
+    }
+
+    .contact-btn {
+        padding: 10px;
+        font-size: 0.85rem;
     }
 
     .gallery-grid {
