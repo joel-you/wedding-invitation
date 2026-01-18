@@ -281,8 +281,8 @@ function calculateDday(targetDate) {
 // 네이버 지도 API 초기화
 function initNaverMap() {
     // 웨딩홀 주소와 좌표
-    const weddingHallAddress = '서울특별시 강남구 논현로 79길 72';
-    const weddingHallName = '올림피아센터빌딩 2층 세인트 메리엘';
+    const weddingHallAddress = '서울특별시 강남구 논현로 79길 72 (올림피아센터빌딩)';
+    const weddingHallName = '세인트 메리엘 2층 세인트홀';
 
     // 강남역 근처 올림피아센터빌딩 좌표
     const position = new naver.maps.LatLng(37.4991, 127.0287);
@@ -304,7 +304,7 @@ function initNaverMap() {
         map: map,
         title: weddingHallName,
         icon: {
-            content: '<div style="background-color: #d4a373; color: white; padding: 10px 15px; border-radius: 20px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">💒 세인트 메리엘</div>',
+            content: '<div style="background-color: #d4a373; color: white; padding: 10px 15px; border-radius: 20px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">💒 세인트 메리엘 2층 세인트홀</div>',
             anchor: new naver.maps.Point(50, 50)
         }
     });
@@ -461,7 +461,7 @@ function initDdayCounter() {
 
 // 주소 복사 기능
 function copyAddress() {
-    const address = '서울특별시 강남구 논현로 79길 72';
+    const address = '서울특별시 강남구 논현로 79길 72 (올림피아센터빌딩)';
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(address)
