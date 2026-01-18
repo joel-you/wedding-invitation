@@ -1,0 +1,11 @@
+{
+  "name": "mobile-wedding-invitation",
+  "version": "1.0.0",
+  "description": "모바일 청첩장",
+  "scripts": {
+    "optimize-images": "node scripts/optimize-images.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0"
+  }
+}

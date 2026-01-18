@@ -5,24 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="모바일 청첩장">
     <title>모바일 청첩장</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=j31ci0k360&submodules=geocoder"></script>
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <div class="container">
-            <h1 class="header-title">Wedding Invitation</h1>
-            <p class="header-subtitle">우리의 특별한 날에 초대합니다</p>
-        </div>
-    </header>
-
-    <!-- Main Image Section -->
+    <!-- Hero Section with Header Overlay -->
     <section class="hero">
         <div class="hero-image">
-            <!-- 메인 사진 영역 -->
-            <div class="hero-placeholder">
-                <p>📷</p>
-                <p>메인 사진</p>
+            <img src="images/optimized/main.jpg" alt="신랑신부 메인 사진" class="hero-img">
+            <div class="hero-overlay">
+                <div class="hero-text">
+                    <h1 class="hero-title">Wedding Invitation</h1>
+                    <p class="hero-subtitle">우리의 특별한 날에 초대합니다</p>
+                </div>
             </div>
         </div>
     </section>
@@ -32,13 +30,13 @@
         <div class="container">
             <div class="couple-names">
                 <div class="groom">
-                    <h2>신랑 이름</h2>
-                    <p>아버지 이름 · 어머니 이름의 장남</p>
+                    <h2>유재영</h2>
+                    <p>유길종 · 유진숙의 장남</p>
                 </div>
                 <div class="divider">♥</div>
                 <div class="bride">
-                    <h2>신부 이름</h2>
-                    <p>아버지 이름 · 어머니 이름의 장녀</p>
+                    <h2>이다은</h2>
+                    <p>이동흥 · 김지혜의 장녀</p>
                 </div>
             </div>
         </div>
@@ -63,26 +61,26 @@
         <div class="container">
             <div class="info-item">
                 <h3>📅 날짜</h3>
-                <p>2025년 00월 00일 (요일) 오후 0시 00분</p>
+                <p>2026년 02월 28일 (토요일) 오후 01시 40분</p>
             </div>
             <div class="info-item">
                 <h3>📍 장소</h3>
                 <p>웨딩홀 이름</p>
-                <p class="address">서울특별시 강남구 000로 00</p>
-                <p class="floor">0층 000홀</p>
+                <p class="address">서울특별시 강남구 논현로 79길 72 올림피아센터빌딩</p>
+                <p class="floor">2층 세인트홀</p>
             </div>
             <div class="info-item">
                 <h3>☎️ 연락처</h3>
                 <div class="contact">
                     <div class="contact-person">
                         <p>신랑에게</p>
-                        <a href="tel:010-0000-0000" class="contact-btn">📞 전화하기</a>
-                        <a href="sms:010-0000-0000" class="contact-btn">💬 문자하기</a>
+                        <a href="tel:010-4420-2250" class="contact-btn">📞 전화하기</a>
+                        <a href="sms:010-4420-2250" class="contact-btn">💬 문자하기</a>
                     </div>
                     <div class="contact-person">
                         <p>신부에게</p>
-                        <a href="tel:010-0000-0000" class="contact-btn">📞 전화하기</a>
-                        <a href="sms:010-0000-0000" class="contact-btn">💬 문자하기</a>
+                        <a href="tel:010-9493-2580" class="contact-btn">📞 전화하기</a>
+                        <a href="sms:010-9493-2580" class="contact-btn">💬 문자하기</a>
                     </div>
                 </div>
             </div>
@@ -93,24 +91,18 @@
     <section class="map">
         <div class="container">
             <h3>오시는 길</h3>
-            <div id="map-container" class="map-container">
-                <!-- 카카오맵 API 또는 Google Maps API 연동 -->
-                <div class="map-placeholder">
-                    <p>🗺️</p>
-                    <p>지도 영역</p>
-                    <p class="map-note">카카오맵 또는 Google Maps API 연동 필요</p>
-                </div>
-            </div>
+            <div id="map" class="map-container"></div>
             <div class="map-info">
                 <h4>🚇 지하철</h4>
-                <p>0호선 000역 0번 출구 도보 0분</p>
+                <p>강남역 2호선 1번출구에서 약 200m 직진, 우리은행에서 우회전 후 약 300m 직진</p>
+                <p>강남역 신분당선 4번출구에서 약 30m 직진, 358타워에서 좌회전 후 약 300m 직진</p>
 
                 <h4>🚌 버스</h4>
-                <p>간선: 000, 000번</p>
-                <p>지선: 0000, 0000번</p>
+                <p>간선: 140, 146, 341, 360, 400, 402, 420, 440, 441, 452, 470, 541, 740, 741번</p>
+                <p>지선: 9404, 9408, M4403, M4434, M5438, M6427, M6439, M7412번</p>
 
                 <h4>🚗 자가용</h4>
-                <p>주차 가능 (0시간 무료)</p>
+                <p>주차 가능 (2시간 무료)</p>
             </div>
         </div>
     </section>
@@ -120,15 +112,86 @@
         <div class="container">
             <h3>갤러리</h3>
             <div class="gallery-grid">
-                <div class="gallery-item">📷</div>
-                <div class="gallery-item">📷</div>
-                <div class="gallery-item">📷</div>
-                <div class="gallery-item">📷</div>
-                <div class="gallery-item">📷</div>
-                <div class="gallery-item">📷</div>
+                <div class="gallery-item" data-index="0">
+                    <img src="images/optimized/gallery-01.jpg" alt="웨딩 사진 1" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="1">
+                    <img src="images/optimized/gallery-02.jpg" alt="웨딩 사진 2" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="2">
+                    <img src="images/optimized/gallery-03.jpg" alt="웨딩 사진 3" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="3">
+                    <img src="images/optimized/gallery-04.jpg" alt="웨딩 사진 4" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="4">
+                    <img src="images/optimized/gallery-05.jpg" alt="웨딩 사진 5" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="5">
+                    <img src="images/optimized/gallery-06.jpg" alt="웨딩 사진 6" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="6">
+                    <img src="images/optimized/gallery-07.jpg" alt="웨딩 사진 7" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="7">
+                    <img src="images/optimized/gallery-08.jpg" alt="웨딩 사진 8" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="8">
+                    <img src="images/optimized/gallery-09.jpg" alt="웨딩 사진 9" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="9">
+                    <img src="images/optimized/gallery-10.jpg" alt="웨딩 사진 10" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="10">
+                    <img src="images/optimized/gallery-11.jpg" alt="웨딩 사진 11" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="11">
+                    <img src="images/optimized/gallery-12.jpg" alt="웨딩 사진 12" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="12">
+                    <img src="images/optimized/gallery-13.jpg" alt="웨딩 사진 13" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="13">
+                    <img src="images/optimized/gallery-14.jpg" alt="웨딩 사진 14" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="14">
+                    <img src="images/optimized/gallery-15.jpg" alt="웨딩 사진 15" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="15">
+                    <img src="images/optimized/gallery-16.jpg" alt="웨딩 사진 16" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="16">
+                    <img src="images/optimized/gallery-17.jpg" alt="웨딩 사진 17" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="17">
+                    <img src="images/optimized/gallery-18.jpg" alt="웨딩 사진 18" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="18">
+                    <img src="images/optimized/gallery-19.jpg" alt="웨딩 사진 19" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="19">
+                    <img src="images/optimized/gallery-20.jpg" alt="웨딩 사진 20" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="20">
+                    <img src="images/optimized/gallery-21.jpg" alt="웨딩 사진 21" loading="lazy">
+                </div>
+                <div class="gallery-item" data-index="21">
+                    <img src="images/optimized/gallery-22.jpg" alt="웨딩 사진 22" loading="lazy">
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage" alt="확대된 이미지">
+        <div class="modal-nav">
+            <button class="modal-prev" id="modalPrev">&#10094;</button>
+            <button class="modal-next" id="modalNext">&#10095;</button>
+        </div>
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
 
     <!-- Account Section -->
     <section class="account">
@@ -140,18 +203,18 @@
                     <div class="account-list">
                         <div class="account-item">
                             <p><strong>신랑</strong></p>
-                            <p>은행명 000-0000-0000</p>
-                            <button class="copy-btn" data-account="00000000000">복사</button>
+                            <p>우리은행 180-136194-12-201</p>
+                            <button class="copy-btn" data-account="18013619412201">복사</button>
                         </div>
                         <div class="account-item">
                             <p><strong>신랑 아버지</strong></p>
-                            <p>은행명 000-0000-0000</p>
-                            <button class="copy-btn" data-account="00000000000">복사</button>
+                            <p>우리은행 176-055504-12-002</p>
+                            <button class="copy-btn" data-account="17605550412002">복사</button>
                         </div>
                         <div class="account-item">
                             <p><strong>신랑 어머니</strong></p>
-                            <p>은행명 000-0000-0000</p>
-                            <button class="copy-btn" data-account="00000000000">복사</button>
+                            <p>우리은행 01097626210</p>
+                            <button class="copy-btn" data-account="01097626210">복사</button>
                         </div>
                     </div>
                 </details>
@@ -161,8 +224,8 @@
                     <div class="account-list">
                         <div class="account-item">
                             <p><strong>신부</strong></p>
-                            <p>은행명 000-0000-0000</p>
-                            <button class="copy-btn" data-account="00000000000">복사</button>
+                            <p>국민은행 27120204152255</p>
+                            <button class="copy-btn" data-account="27120204152255">복사</button>
                         </div>
                         <div class="account-item">
                             <p><strong>신부 아버지</strong></p>
@@ -194,8 +257,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>Thank you for celebrating with us</p>
-            <p class="footer-date">2025. 00. 00</p>
+            <div class="footer-heart">♥</div>
+            <p class="footer-message">Thank you for celebrating with us</p>
+            <p class="footer-date">2026. 02. 28</p>
+            <p class="footer-names">Jaeyoung & Daeun</p>
         </div>
     </footer>
 

@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initCopyButtons();
     initShareButtons();
     initSmoothScroll();
+    initGalleryModal();
+    initNaverMap();
 });
 
 // 계좌번호 복사 기능
@@ -158,17 +160,105 @@ function initSmoothScroll() {
     });
 }
 
-// 갤러리 이미지 클릭 시 확대 (선택 사항)
-function initGallery() {
+// 갤러리 이미지 모달 기능
+function initGalleryModal() {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const closeBtn = document.querySelector('.modal-close');
+    const prevBtn = document.getElementById('modalPrev');
+    const nextBtn = document.getElementById('modalNext');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
-    galleryItems.forEach(item => {
+    let currentIndex = 0;
+    const totalImages = galleryItems.length;
+
+    // 갤러리 아이템 클릭 이벤트
+    galleryItems.forEach((item, index) => {
         item.addEventListener('click', function() {
-            // 이미지 확대 기능 구현
-            // 모달이나 라이트박스 라이브러리 사용 권장
-            console.log('갤러리 아이템 클릭');
+            currentIndex = index;
+            openModal();
         });
     });
+
+    // 모달 열기
+    function openModal() {
+        const img = galleryItems[currentIndex].querySelector('img');
+        modal.style.display = 'block';
+        modalImg.src = img.src;
+        modalCaption.textContent = img.alt;
+        document.body.style.overflow = 'hidden';
+    }
+
+    // 모달 닫기
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // 이전 이미지
+    function showPrevImage() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        const img = galleryItems[currentIndex].querySelector('img');
+        modalImg.src = img.src;
+        modalCaption.textContent = img.alt;
+    }
+
+    // 다음 이미지
+    function showNextImage() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        const img = galleryItems[currentIndex].querySelector('img');
+        modalImg.src = img.src;
+        modalCaption.textContent = img.alt;
+    }
+
+    // 이벤트 리스너
+    closeBtn.addEventListener('click', closeModal);
+    prevBtn.addEventListener('click', showPrevImage);
+    nextBtn.addEventListener('click', showNextImage);
+
+    // 모달 배경 클릭 시 닫기
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // 키보드 네비게이션
+    document.addEventListener('keydown', function(e) {
+        if (modal.style.display === 'block') {
+            if (e.key === 'Escape') {
+                closeModal();
+            } else if (e.key === 'ArrowLeft') {
+                showPrevImage();
+            } else if (e.key === 'ArrowRight') {
+                showNextImage();
+            }
+        }
+    });
+
+    // 터치 스와이프 지원
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    modalImg.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    modalImg.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold) {
+            showNextImage();
+        }
+        if (touchEndX > touchStartX + swipeThreshold) {
+            showPrevImage();
+        }
+    }
 }
 
 // D-Day 카운터 (선택 사항)
@@ -185,40 +275,68 @@ function calculateDday(targetDate) {
 // const dday = calculateDday('2025-06-15');
 // console.log(`D-${dday}`);
 
-// 카카오맵 API 초기화 (선택 사항)
-function initKakaoMap() {
-    // 카카오맵 API 사용 시 아래 코드 참고
-    /*
-    const container = document.getElementById('map-container');
-    const options = {
-        center: new kakao.maps.LatLng(37.5665, 126.9780),
-        level: 3
-    };
-    const map = new kakao.maps.Map(container, options);
+// 네이버 지도 API 초기화
+function initNaverMap() {
+    // 웨딩홀 주소와 좌표
+    const weddingHallAddress = '서울특별시 강남구 논현로 79길 72';
+    const weddingHallName = '올림피아센터빌딩 2층 세인트홀';
 
-    const markerPosition = new kakao.maps.LatLng(37.5665, 126.9780);
-    const marker = new kakao.maps.Marker({
-        position: markerPosition
-    });
-    marker.setMap(map);
-    */
-}
+    // 강남역 근처 올림피아센터빌딩 좌표
+    const position = new naver.maps.LatLng(37.4991, 127.0287);
 
-// Google Maps API 초기화 (선택 사항)
-function initGoogleMap() {
-    // Google Maps API 사용 시 아래 코드 참고
-    /*
-    const mapContainer = document.getElementById('map-container');
-    const location = { lat: 37.5665, lng: 126.9780 };
-
-    const map = new google.maps.Map(mapContainer, {
+    const mapOptions = {
+        center: position,
         zoom: 16,
-        center: location
+        zoomControl: true,
+        zoomControlOptions: {
+            position: naver.maps.Position.TOP_RIGHT
+        }
+    };
+
+    const map = new naver.maps.Map('map', mapOptions);
+
+    // 마커 생성
+    const marker = new naver.maps.Marker({
+        position: position,
+        map: map,
+        title: weddingHallName,
+        icon: {
+            content: '<div style="background-color: #d4a373; color: white; padding: 10px 15px; border-radius: 20px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">💒 세인트홀</div>',
+            anchor: new naver.maps.Point(50, 50)
+        }
     });
 
-    const marker = new google.maps.Marker({
-        position: location,
-        map: map
+    // 정보창 생성
+    const infoWindow = new naver.maps.InfoWindow({
+        content: `
+            <div style="padding: 15px; min-width: 200px;">
+                <h4 style="margin: 0 0 10px 0; color: #d4a373; font-size: 1.1rem;">💒 ${weddingHallName}</h4>
+                <p style="margin: 5px 0; font-size: 0.9rem; color: #666;">${weddingHallAddress}</p>
+                <div style="margin-top: 10px; display: flex; gap: 5px;">
+                    <a href="https://map.naver.com/p/search/${encodeURIComponent(weddingHallAddress)}"
+                       target="_blank"
+                       style="display: inline-block; padding: 8px 12px; background-color: #03C75A; color: white; text-decoration: none; border-radius: 5px; font-size: 0.85rem;">
+                       네이버지도
+                    </a>
+                    <a href="https://m.map.kakao.com/actions/searchView?q=${encodeURIComponent(weddingHallAddress)}"
+                       target="_blank"
+                       style="display: inline-block; padding: 8px 12px; background-color: #FEE500; color: #000; text-decoration: none; border-radius: 5px; font-size: 0.85rem;">
+                       카카오맵
+                    </a>
+                </div>
+            </div>
+        `
     });
-    */
+
+    // 마커 클릭 시 정보창 표시
+    naver.maps.Event.addListener(marker, 'click', function() {
+        if (infoWindow.getMap()) {
+            infoWindow.close();
+        } else {
+            infoWindow.open(map, marker);
+        }
+    });
+
+    // 페이지 로드 시 정보창 자동 표시
+    infoWindow.open(map, marker);
 }
