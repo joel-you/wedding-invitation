@@ -569,17 +569,16 @@ body {
     box-shadow: var(--shadow);
 }
 
-.map-icon {
-    width: 28px;
-    height: 28px;
+.map-icon-simple {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.map-icon svg {
-    width: 20px;
-    height: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: white;
 }
 
 .map-link.naver {
@@ -587,14 +586,29 @@ body {
     color: white;
 }
 
+.map-link.naver .map-icon-simple {
+    background: white;
+    color: #03C75A;
+}
+
 .map-link.kakao {
     background: #FEE500;
     color: #3C1E1E;
 }
 
+.map-link.kakao .map-icon-simple {
+    background: white;
+    font-size: 1.3rem;
+}
+
 .map-link.tmap {
     background: #1E88E5;
     color: white;
+}
+
+.map-link.tmap .map-icon-simple {
+    background: white;
+    font-size: 1.3rem;
 }
 
 .map-link:hover {
