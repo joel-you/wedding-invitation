@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="모바일 청첩장">
+    <title>모바일 청첩장</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title">Wedding Invitation</h1>
+            <p class="header-subtitle">우리의 특별한 날에 초대합니다</p>
+        </div>
+    </header>
+
+    <!-- Main Image Section -->
+    <section class="hero">
+        <div class="hero-image">
+            <!-- 메인 사진 영역 -->
+            <div class="hero-placeholder">
+                <p>📷</p>
+                <p>메인 사진</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Couple Names Section -->
+    <section class="couple">
+        <div class="container">
+            <div class="couple-names">
+                <div class="groom">
+                    <h2>신랑 이름</h2>
+                    <p>아버지 이름 · 어머니 이름의 장남</p>
+                </div>
+                <div class="divider">♥</div>
+                <div class="bride">
+                    <h2>신부 이름</h2>
+                    <p>아버지 이름 · 어머니 이름의 장녀</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Invitation Message Section -->
+    <section class="message">
+        <div class="container">
+            <p class="message-text">
+                평생을 함께하기로 약속한 두 사람<br>
+                소중한 분들을 모시고<br>
+                결혼식을 올리게 되었습니다.<br>
+                <br>
+                오셔서 축복해 주시면<br>
+                더없는 기쁨으로 간직하겠습니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- Wedding Info Section -->
+    <section class="wedding-info">
+        <div class="container">
+            <div class="info-item">
+                <h3>📅 날짜</h3>
+                <p>2025년 00월 00일 (요일) 오후 0시 00분</p>
+            </div>
+            <div class="info-item">
+                <h3>📍 장소</h3>
+                <p>웨딩홀 이름</p>
+                <p class="address">서울특별시 강남구 000로 00</p>
+                <p class="floor">0층 000홀</p>
+            </div>
+            <div class="info-item">
+                <h3>☎️ 연락처</h3>
+                <div class="contact">
+                    <div class="contact-person">
+                        <p>신랑에게</p>
+                        <a href="tel:010-0000-0000" class="contact-btn">📞 전화하기</a>
+                        <a href="sms:010-0000-0000" class="contact-btn">💬 문자하기</a>
+                    </div>
+                    <div class="contact-person">
+                        <p>신부에게</p>
+                        <a href="tel:010-0000-0000" class="contact-btn">📞 전화하기</a>
+                        <a href="sms:010-0000-0000" class="contact-btn">💬 문자하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map">
+        <div class="container">
+            <h3>오시는 길</h3>
+            <div id="map-container" class="map-container">
+                <!-- 카카오맵 API 또는 Google Maps API 연동 -->
+                <div class="map-placeholder">
+                    <p>🗺️</p>
+                    <p>지도 영역</p>
+                    <p class="map-note">카카오맵 또는 Google Maps API 연동 필요</p>
+                </div>
+            </div>
+            <div class="map-info">
+                <h4>🚇 지하철</h4>
+                <p>0호선 000역 0번 출구 도보 0분</p>
+
+                <h4>🚌 버스</h4>
+                <p>간선: 000, 000번</p>
+                <p>지선: 0000, 0000번</p>
+
+                <h4>🚗 자가용</h4>
+                <p>주차 가능 (0시간 무료)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h3>갤러리</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">📷</div>
+                <div class="gallery-item">📷</div>
+                <div class="gallery-item">📷</div>
+                <div class="gallery-item">📷</div>
+                <div class="gallery-item">📷</div>
+                <div class="gallery-item">📷</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Account Section -->
+    <section class="account">
+        <div class="container">
+            <h3>마음 전하실 곳</h3>
+            <div class="account-info">
+                <details class="account-details">
+                    <summary>신랑측 계좌번호</summary>
+                    <div class="account-list">
+                        <div class="account-item">
+                            <p><strong>신랑</strong></p>
+                            <p>은행명 000-0000-0000</p>
+                            <button class="copy-btn" data-account="00000000000">복사</button>
+                        </div>
+                        <div class="account-item">
+                            <p><strong>신랑 아버지</strong></p>
+                            <p>은행명 000-0000-0000</p>
+                            <button class="copy-btn" data-account="00000000000">복사</button>
+                        </div>
+                        <div class="account-item">
+                            <p><strong>신랑 어머니</strong></p>
+                            <p>은행명 000-0000-0000</p>
+                            <button class="copy-btn" data-account="00000000000">복사</button>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="account-details">
+                    <summary>신부측 계좌번호</summary>
+                    <div class="account-list">
+                        <div class="account-item">
+                            <p><strong>신부</strong></p>
+                            <p>은행명 000-0000-0000</p>
+                            <button class="copy-btn" data-account="00000000000">복사</button>
+                        </div>
+                        <div class="account-item">
+                            <p><strong>신부 아버지</strong></p>
+                            <p>은행명 000-0000-0000</p>
+                            <button class="copy-btn" data-account="00000000000">복사</button>
+                        </div>
+                        <div class="account-item">
+                            <p><strong>신부 어머니</strong></p>
+                            <p>은행명 000-0000-0000</p>
+                            <button class="copy-btn" data-account="00000000000">복사</button>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Section -->
+    <section class="share">
+        <div class="container">
+            <h3>공유하기</h3>
+            <div class="share-buttons">
+                <button class="share-btn" id="kakao-share">카카오톡</button>
+                <button class="share-btn" id="link-copy">링크 복사</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Thank you for celebrating with us</p>
+            <p class="footer-date">2025. 00. 00</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
