@@ -18,8 +18,8 @@ const imageFiles = fs.readdirSync(sourceDir)
 console.log(`총 ${imageFiles.length}개의 이미지 파일을 처리합니다.\n`);
 
 async function optimizeImages() {
-  // 메인 이미지 처리 (001번)
-  const mainImage = imageFiles[0];
+  // 메인 이미지 처리 (013번 사진으로 변경)
+  const mainImage = imageFiles.find(f => f.includes('013')) || imageFiles[0];
   console.log(`메인 이미지 처리 중: ${mainImage}`);
 
   await sharp(path.join(sourceDir, mainImage))

@@ -1383,10 +1383,11 @@ section {
     position: absolute;
     top: -50px;
     font-size: 20px;
-    color: var(--primary-color);
-    opacity: 0.4;
+    color: white;
+    opacity: 0.7;
     pointer-events: none;
     animation: fall linear infinite;
+    text-shadow: 0 0 3px rgba(212, 165, 165, 0.3);
 }
 
 @keyframes fall {

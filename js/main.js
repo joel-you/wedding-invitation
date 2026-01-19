@@ -278,7 +278,7 @@ function calculateDday(targetDate) {
 // const dday = calculateDday('2025-06-15');
 // console.log(`D-${dday}`);
 
-// 네이버 지도 API 초기화
+// 네이버 지도 API 초기화 (단순한 정적 지도 스타일)
 function initNaverMap() {
     // 웨딩홀 주소와 좌표
     const weddingHallAddress = '서울특별시 강남구 논현로 79길 72 (올림피아센터빌딩)';
@@ -289,68 +289,30 @@ function initNaverMap() {
 
     const mapOptions = {
         center: position,
-        zoom: 17,
-        zoomControl: true,
-        zoomControlOptions: {
-            position: naver.maps.Position.TOP_RIGHT
-        },
+        zoom: 16,
+        zoomControl: false,
         mapTypeControl: false,
         scaleControl: false,
-        logoControl: true,
-        mapDataControl: false
+        logoControl: false,
+        mapDataControl: false,
+        scrollWheel: false,
+        draggable: true,
+        pinchZoom: false,
+        tileTransition: false
     };
 
     const map = new naver.maps.Map('map', mapOptions);
 
-    // 마커 생성 (모바일/데스크톱 반응형)
-    const isMobile = window.innerWidth <= 480;
-    const markerContent = isMobile
-        ? '<div style="background-color: #d4a5a5; color: white; padding: 6px 10px; border-radius: 12px; font-weight: 600; box-shadow: 0 2px 6px rgba(0,0,0,0.3); font-size: 0.75rem; white-space: nowrap;">💒 세인트메리엘</div>'
-        : '<div style="background-color: #d4a5a5; color: white; padding: 8px 12px; border-radius: 16px; font-weight: 600; box-shadow: 0 3px 8px rgba(0,0,0,0.3); font-size: 0.9rem; white-space: nowrap;">💒 세인트 메리엘</div>';
-
+    // 단순한 마커 생성
     const marker = new naver.maps.Marker({
         position: position,
         map: map,
         title: weddingHallName,
         icon: {
-            content: markerContent,
-            anchor: new naver.maps.Point(isMobile ? 55 : 70, isMobile ? 28 : 35)
+            content: '<div style="width: 40px; height: 40px; background-color: #d4a5a5; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;"><span style="transform: rotate(45deg); font-size: 20px;">💒</span></div>',
+            anchor: new naver.maps.Point(20, 40)
         }
     });
-
-    // 정보창 생성
-    const infoWindow = new naver.maps.InfoWindow({
-        content: `
-            <div style="padding: 15px; min-width: 200px;">
-                <h4 style="margin: 0 0 10px 0; color: #d4a373; font-size: 1.1rem;">💒 ${weddingHallName}</h4>
-                <p style="margin: 5px 0; font-size: 0.9rem; color: #666;">${weddingHallAddress}</p>
-                <div style="margin-top: 10px; display: flex; gap: 5px;">
-                    <a href="https://map.naver.com/p/search/${encodeURIComponent(weddingHallAddress)}"
-                       target="_blank"
-                       style="display: inline-block; padding: 8px 12px; background-color: #03C75A; color: white; text-decoration: none; border-radius: 5px; font-size: 0.85rem;">
-                       네이버지도
-                    </a>
-                    <a href="https://m.map.kakao.com/actions/searchView?q=${encodeURIComponent(weddingHallAddress)}"
-                       target="_blank"
-                       style="display: inline-block; padding: 8px 12px; background-color: #FEE500; color: #000; text-decoration: none; border-radius: 5px; font-size: 0.85rem;">
-                       카카오맵
-                    </a>
-                </div>
-            </div>
-        `
-    });
-
-    // 마커 클릭 시 정보창 표시
-    naver.maps.Event.addListener(marker, 'click', function() {
-        if (infoWindow.getMap()) {
-            infoWindow.close();
-        } else {
-            infoWindow.open(map, marker);
-        }
-    });
-
-    // 페이지 로드 시 정보창 자동 표시
-    infoWindow.open(map, marker);
 }
 
 // 떨어지는 꽃잎 효과
