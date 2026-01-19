@@ -289,23 +289,32 @@ function initNaverMap() {
 
     const mapOptions = {
         center: position,
-        zoom: 16,
+        zoom: 17,
         zoomControl: true,
         zoomControlOptions: {
             position: naver.maps.Position.TOP_RIGHT
-        }
+        },
+        mapTypeControl: false,
+        scaleControl: false,
+        logoControl: true,
+        mapDataControl: false
     };
 
     const map = new naver.maps.Map('map', mapOptions);
 
-    // 마커 생성
+    // 마커 생성 (모바일/데스크톱 반응형)
+    const isMobile = window.innerWidth <= 480;
+    const markerContent = isMobile
+        ? '<div style="background-color: #d4a5a5; color: white; padding: 6px 10px; border-radius: 12px; font-weight: 600; box-shadow: 0 2px 6px rgba(0,0,0,0.3); font-size: 0.75rem; white-space: nowrap;">💒 세인트메리엘</div>'
+        : '<div style="background-color: #d4a5a5; color: white; padding: 8px 12px; border-radius: 16px; font-weight: 600; box-shadow: 0 3px 8px rgba(0,0,0,0.3); font-size: 0.9rem; white-space: nowrap;">💒 세인트 메리엘</div>';
+
     const marker = new naver.maps.Marker({
         position: position,
         map: map,
         title: weddingHallName,
         icon: {
-            content: '<div style="background-color: #d4a373; color: white; padding: 10px 15px; border-radius: 20px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.3);">💒 세인트 메리엘 2층 세인트홀</div>',
-            anchor: new naver.maps.Point(50, 50)
+            content: markerContent,
+            anchor: new naver.maps.Point(isMobile ? 55 : 70, isMobile ? 28 : 35)
         }
     });
 
@@ -352,11 +361,11 @@ function initFallingPetals() {
         return;
     }
 
-    // 꽃잎 모양 배열 (다양한 꽃 이모지)
-    const petalShapes = ['🌸', '🌺', '🌼', '✿', '❀', '💐'];
+    // 다양한 꽃잎 모양 배열 (더 예쁜 꽃 이모지 추가)
+    const petalShapes = ['🌸', '🌺', '🌼', '🌷', '🌹', '💮', '🏵️', '✿', '❀', '🪷'];
 
     // 꽃잎 생성 개수 (은은하게 하기 위해 적게 설정)
-    const petalCount = 15;
+    const petalCount = 20;
 
     // 꽃잎 생성 함수
     function createPetal() {
@@ -370,25 +379,25 @@ function initFallingPetals() {
         petal.style.left = Math.random() * 100 + '%';
 
         // 랜덤 크기 (작게)
-        const size = 15 + Math.random() * 10;
+        const size = 14 + Math.random() * 12;
         petal.style.fontSize = size + 'px';
 
         // 랜덤 애니메이션 지속 시간 (느리게)
-        const duration = 8 + Math.random() * 7;
+        const duration = 10 + Math.random() * 8;
         petal.style.animationDuration = duration + 's';
 
         // 랜덤 지연 시간
-        petal.style.animationDelay = Math.random() * 5 + 's';
+        petal.style.animationDelay = Math.random() * 6 + 's';
 
-        // 은은한 투명도 (0.2 ~ 0.4)
-        petal.style.opacity = 0.2 + Math.random() * 0.2;
+        // 은은한 투명도 (0.25 ~ 0.45)
+        petal.style.opacity = 0.25 + Math.random() * 0.2;
 
         petalsContainer.appendChild(petal);
 
         // 애니메이션 끝나면 꽃잎 재생성
         petal.addEventListener('animationiteration', function() {
             petal.style.left = Math.random() * 100 + '%';
-            const newDuration = 8 + Math.random() * 7;
+            const newDuration = 10 + Math.random() * 8;
             petal.style.animationDuration = newDuration + 's';
         });
     }
@@ -397,7 +406,7 @@ function initFallingPetals() {
     for (let i = 0; i < petalCount; i++) {
         setTimeout(() => {
             createPetal();
-        }, i * 200); // 0.2초 간격으로 생성
+        }, i * 300); // 0.3초 간격으로 생성
     }
 }
 
