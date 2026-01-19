@@ -303,14 +303,22 @@ function initNaverMap() {
 
     const map = new naver.maps.Map('map', mapOptions);
 
-    // 단순한 마커 생성
+    // 파란색 핀 마커 생성
     const marker = new naver.maps.Marker({
         position: position,
         map: map,
         title: weddingHallName,
         icon: {
-            content: '<div style="width: 40px; height: 40px; background-color: #d4a5a5; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;"><span style="transform: rotate(45deg); font-size: 20px;">💒</span></div>',
-            anchor: new naver.maps.Point(20, 40)
+            content: `
+                <div style="position: relative; width: 36px; height: 50px;">
+                    <svg width="36" height="50" viewBox="0 0 36 50" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 0C8.06 0 0 8.06 0 18c0 13.5 18 32 18 32s18-18.5 18-32C36 8.06 27.94 0 18 0z"
+                              fill="#4A90E2" stroke="white" stroke-width="2"/>
+                        <circle cx="18" cy="18" r="8" fill="white"/>
+                    </svg>
+                </div>
+            `,
+            anchor: new naver.maps.Point(18, 50)
         }
     });
 }
@@ -323,8 +331,8 @@ function initFallingPetals() {
         return;
     }
 
-    // 다양한 꽃잎 모양 배열 (더 예쁜 꽃 이모지 추가)
-    const petalShapes = ['🌸', '🌺', '🌼', '🌷', '🌹', '💮', '🏵️', '✿', '❀', '🪷'];
+    // 흰색 꽃잎 모양 배열 (우아한 흰색 꽃들)
+    const petalShapes = ['🤍', '💮', '🏵️', '⚪', '◦', '○', '⭕', '◯'];
 
     // 꽃잎 생성 개수 (은은하게 하기 위해 적게 설정)
     const petalCount = 20;

@@ -18,8 +18,8 @@ const imageFiles = fs.readdirSync(sourceDir)
 console.log(`총 ${imageFiles.length}개의 이미지 파일을 처리합니다.\n`);
 
 async function optimizeImages() {
-  // 메인 이미지 처리 (013번 사진으로 변경)
-  const mainImage = imageFiles.find(f => f.includes('013')) || imageFiles[0];
+  // 메인 이미지 처리 (001번)
+  const mainImage = imageFiles[0];
   console.log(`메인 이미지 처리 중: ${mainImage}`);
 
   await sharp(path.join(sourceDir, mainImage))
@@ -31,6 +31,20 @@ async function optimizeImages() {
     .toFile(path.join(targetDir, 'main.jpg'));
 
   console.log('✓ 메인 이미지 최적화 완료: main.jpg\n');
+
+  // 썸네일 이미지 처리 (013번)
+  const thumbnailImage = imageFiles.find(f => f.includes('013')) || imageFiles[0];
+  console.log(`썸네일 이미지 처리 중: ${thumbnailImage}`);
+
+  await sharp(path.join(sourceDir, thumbnailImage))
+    .resize(1200, 630, {
+      fit: 'cover',
+      position: 'center'
+    })
+    .jpeg({ quality: 85, progressive: true })
+    .toFile(path.join(targetDir, 'thumbnail.jpg'));
+
+  console.log('✓ 썸네일 이미지 최적화 완료: thumbnail.jpg\n');
 
   // 갤러리 이미지들 처리
   console.log('갤러리 이미지 처리 중...');
