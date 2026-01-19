@@ -331,11 +331,11 @@ function initFallingPetals() {
         return;
     }
 
-    // 흰색 꽃잎 모양 배열 (우아한 흰색 꽃들)
-    const petalShapes = ['🤍', '💮', '🏵️', '⚪', '◦', '○', '⭕', '◯'];
+    // 우아한 흰색 꽃잎만 사용
+    const petalShapes = ['🤍', '🤍', '🤍', '⚪', '○'];
 
-    // 꽃잎 생성 개수 (은은하게 하기 위해 적게 설정)
-    const petalCount = 20;
+    // 꽃잎 생성 개수
+    const petalCount = 25;
 
     // 꽃잎 생성 함수
     function createPetal() {
@@ -348,26 +348,26 @@ function initFallingPetals() {
         // 랜덤 시작 위치 (가로)
         petal.style.left = Math.random() * 100 + '%';
 
-        // 랜덤 크기 (작게)
-        const size = 14 + Math.random() * 12;
+        // 랜덤 크기
+        const size = 16 + Math.random() * 14;
         petal.style.fontSize = size + 'px';
 
         // 랜덤 애니메이션 지속 시간 (느리게)
-        const duration = 10 + Math.random() * 8;
+        const duration = 8 + Math.random() * 6;
         petal.style.animationDuration = duration + 's';
 
         // 랜덤 지연 시간
-        petal.style.animationDelay = Math.random() * 6 + 's';
+        petal.style.animationDelay = Math.random() * 5 + 's';
 
-        // 은은한 투명도 (0.25 ~ 0.45)
-        petal.style.opacity = 0.25 + Math.random() * 0.2;
+        // 투명도
+        petal.style.opacity = 0.4 + Math.random() * 0.3;
 
         petalsContainer.appendChild(petal);
 
         // 애니메이션 끝나면 꽃잎 재생성
         petal.addEventListener('animationiteration', function() {
             petal.style.left = Math.random() * 100 + '%';
-            const newDuration = 10 + Math.random() * 8;
+            const newDuration = 8 + Math.random() * 6;
             petal.style.animationDuration = newDuration + 's';
         });
     }
@@ -376,7 +376,7 @@ function initFallingPetals() {
     for (let i = 0; i < petalCount; i++) {
         setTimeout(() => {
             createPetal();
-        }, i * 300); // 0.3초 간격으로 생성
+        }, i * 200); // 0.2초 간격으로 생성
     }
 }
 
